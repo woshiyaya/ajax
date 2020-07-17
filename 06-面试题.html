@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function a () {
+
+        // }
+
+        // console.log(a);
+
+
+        // 思考题
+
+        /*
+        JS的词法分析
+
+        一个函数在执行的时刻，会临时生成一个活动对象 Active object，简称 AO
+        函数向的成员都是AO的成员。
+
+        // 词法分析，分析的内容有三方面。
+            1. 分析函数的参数（形参和实参）
+                如果函数有形参，在把形参放到AO对象上，值是undefined
+                如果函数有实参，则把实参放到AO对象上，值是实参的值。如果原来的AO对象上有该属性了，则覆盖
+            2. 分析变量的声明（这里只分析变量的声明，赋值过程不在分析的范围内）
+                有变量声明，则把变量放到AO对象上，值是undefined。如果AO对象上已经有该属性了，则不会覆盖
+            3. 分析函数声明（function命令声明的函数）
+                如果有函数声明，则分析函数。把函数放到AO对象上，如果AO对象上已经有该属性，则覆盖掉
+        
+            执行代码：
+                词法分析，没有分析到的代码，都是在执行阶段执行的。按顺序从上到下执行即可
+        */
+
+        function a (b) {
+            console.log(b); // function b () {}
+            
+            function b () {
+
+            }
+
+            var b = 10;
+            console.log(b); // 10
+        }
+
+        a(20);
+
+        /*
+            AO = {
+                b: 10
+            }
+        */
+    </script>
+</body>
+</html>

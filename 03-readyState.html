@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest(); // 对象创建之后，readyState = 0
+        // console.log(xhr.readyState);
+
+        // 当ajax的状态改变的时候，就会触发
+        /*
+        0 ==> 1
+        1 ==> 2
+        2 ==> 3
+        3 ==> 4
+        */
+        xhr.onreadystatechange = function () {
+            // console.log(this.readyState);
+            // 什么时候，应该去接收响应的结果呢？ 答：当readyState==4的时候，然后才接收结果
+            if (this.readyState == 4) {
+                console.log(this.responseText);
+            }
+        }
+
+        xhr.open('GET', '/common/getCurrentTime');
+        xhr.send();
+    </script>
+</body>
+</html>

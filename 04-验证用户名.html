@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证用户名</title>
+</head>
+<body>
+    <input type="text"><span></span>
+
+    <script src="../lib/jquery-3.4.1.min.js"></script>
+
+    <script>
+        // 输入框失去焦点的时候，向服务器的接口发送一个ajax请求，来验证用户名是否可用
+        $('input').blur(function () {
+
+            // 获取输入框的值
+            var zhi = $(this).val().trim(); // trim去掉两边的空白
+
+            // 发送ajax请求，验证用户名
+            $.ajax({
+                type: 'GET',
+                url: '/common/checkUser',
+                data: { userName: zhi },
+                success: function (res) {
+                    // console.log(res);
+                    if (res == 1) {
+                        $('span').html('<span style="color: green">恭喜，用户名可用</span>');
+                    } else {
+                        $('span').html('<span style="color: red">sorry，请换一个吧</span>');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        
+        console.log(111);
+
+        // ajax请求是一个耗时操作
+        // 同步操作 会 阻塞后续的代码
+        var xhr = new XMLHttpRequest();
+        // 请求响应整个过程成功结束了，xhr.onload才会触发
+        xhr.onload = function () {
+            console.log(333)
+        }
+        // open 方法的第三个参数是一个bool值，默认true表示异步请求；如果指定为false则表示同步请求
+        xhr.open('GET', '/common/getCurrentTime', false)
+        xhr.send();
+
+
+        console.log(222)
+    </script>
+
+</body>
+
+</html>

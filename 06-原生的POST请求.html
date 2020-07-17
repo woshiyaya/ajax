@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="添加">
+
+    <script>
+        document.getElementById('btn').onclick = function () {
+            // 1. 创建xhr对象
+            var xhr = new XMLHttpRequest();
+
+            // 2. 注册onload事件。请求响应整个过程成功，就会触发这个事件
+            xhr.onload = function () {
+                console.log(this.response);
+            }
+
+            // 3. 调用open，设置请求方式和url
+            xhr.open('POST', '/message/addMsg');
+
+            // 4. 调用setRequestHeader方法，设置一个请求头
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // xhr.setRequestHeader('Content-Type', 'application/json');
+
+            /**
+             * 请求头类型有三种：
+             *      application/x-www-form-urlencoded    -----   字符串格式
+             *      application/json  ----   JSON格式
+             *      multipart/form-data    ----   是FormData对象格式
+             * 这个请求头的作用：
+             *      告诉服务器，给你发送的数据是什么格式的
+             */
+
+            // 5. 调用send，发送请求
+            // xhr.send(请求参数);   // 请求参数的格式：  name=xxx&content=xxx
+            xhr.send('name=艾丽&content=给我来一个美女');
+
+        }
+    </script>
+</body>
+</html>

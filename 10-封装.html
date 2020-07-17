@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 封装的目的：
+        // 每次ajax请求，都要写一大段代码，太麻烦。如果封装成函数，就调用函数即可
+        // 练习并提高编程能力
+        // 体会回调函数的使用
+
+        // 封装的步骤
+        // 1. 先写好基础的代码
+        // 2. 套一个function，封装成函数
+        // 3. 抽离参数，让函数更加灵活
+            // 参数1：请求方式  ----  type
+            // 参数2：url     ----- url
+            // 参数3：请求参数   ----  data
+            // 参数4：处理响应的结果  --- success
+        // 4. 优化代码，让代码更加健壮
+
+        function ajax (type, url, data, success) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                // console.log(this.response);
+                success(this.response);
+            }
+
+            type = type.toUpperCase(); // 把传递进来的type统一转成大写
+
+            if (type === 'GET') {
+
+                xhr.open(type, url + '?' + data);
+                xhr.send();
+
+            } else if (type === 'POST') {
+
+                xhr.open(type, url);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(data);
+
+            }
+            // return 222;
+        }
+        ajax('get', '/common/checkUser', 'userName=孔子123', function (res) {
+            console.log(res);
+        });
+
+        // ajax({
+        //     type: 'GET',
+        //     url: 'xxxx',
+        //     success: function () {
+
+        //     }
+        // });
+    </script>
+</body>
+</html>

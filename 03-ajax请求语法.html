@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="button" value="点击发送请求">
+
+    <script src="../lib/jquery-3.4.1.min.js"></script>
+
+    <script>
+        // 点击按钮的时候，发送请求
+        $('input').click(function () {
+            $.ajax({
+                // 键: 值,
+                type: 'GET', // 默认是GET，可选POST
+                url: '/common/getCurrentTime', // 接口地址
+                // data: {userName: xxx}, // 请求参数   data--数据  database--数据库   date--日期
+                success: function (res) {
+                    // success，请求响应过程成功之后，触发的函数
+                    // res 就是服务器响应的结果
+                    console.log(res);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

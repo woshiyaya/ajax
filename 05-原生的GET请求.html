@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 目标、发送请求，获取时间戳
+
+        // 1. 创建 XMLHttpRequest 对象（浏览器内置对象）-- 它负责ajax
+        var xhr = new XMLHttpRequest();
+
+        // 2. 注册onload事件，当请求响应成功之后，会触发这个事件。事件处理函数内部，接收并处理结果
+        xhr.onload = function () {
+            // console.log(xhr.response);
+            console.log(this.response);
+        }
+
+        // 3. 调用open方法，设置请求方式和url
+        xhr.open('GET', '/common/getCurrentTime');
+
+        // 4. 调用send方法，发送请求
+        xhr.send();
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            console.log(this.response);
+        }
+        xhr.open('GET', '/message/getMsg');
+        // 在open和send之间，使用新增的属性 responseType 来指定服务器响应结果的类型
+        /*
+        如果指定了responseType。xhr对象会自动处理服务器响应的结果。
+        比如指定为json。则xhr对象会自动对响应结果使用JSON.parse
+
+        responseType 默认是 '' 
+        可选的值：
+            text --- 和 '' 一个意思，表示服务器返回的数据是文本类型
+            json --- 表示服务器返回的是JSON格式，会自动对结果应用JSON.parse
+            document --- 表示服务器返回的是XML格式的数据。会把xml的结果转成dom对象
+        */
+        xhr.responseType = 'json';
+        xhr.send();
+    </script>
+</body>
+</html>

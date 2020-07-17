@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击发送请求" id="btn">
+
+    <script>
+        document.getElementById('btn').onclick = function () {
+            // 发送GET方式的ajax请求
+            var xhr = new XMLHttpRequest(); // 创建对象
+            xhr.onload = function () {
+                console.log(this.response);
+            };
+            // 请求参数的格式：
+            // name=xxx&age=xxx&sex=xxx
+            xhr.open('GET', '/common/checkUser?userName=孔子123');
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
